@@ -14,6 +14,10 @@ face_detector = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_front
 if not os.path.exists(dataset_path):
     os.makedirs(dataset_path)
 
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify({"message": "Face Recognition API is running"}), 200
+
 @app.route('/upload_faces', methods=['POST'])
 def upload_faces():
     """Receive multiple images for a person and store them."""
